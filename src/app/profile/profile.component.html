@@ -1,8 +1,51 @@
-<html>
-<body>
 
-<h2>HTML Image</h2>
-<img src="" alt="Fitness" width="500" height="333">
+<form [formGroup]="profileForm">
 
-</body>
-</html>
+  <br>
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" required="required" formControlName="firstName">
+
+  <br>
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" required="required" formControlName="lastName">
+
+  <br>
+  <label for="phone-number">Phone-number: </label>
+  <input id="phone-number" type="text" required="required" formControlName="phonenumber">
+
+</form>
+
+<br>
+<div formGroupName="health">
+  <h2>Health Details</h2>
+  <br>
+  <label for="dob">Date of birth: </label>
+  <input id="dob" type="text" required="required" formControlName="dob">
+  <br>
+  <label for="height">Height: </label>
+  <input id="height" type="text" required="required" formControlName="height">
+  <br>
+  <label for="weight">Weight: </label>
+  <input id="weight" type="text" required="required" formControlName="weight">
+  <br>
+  <label for="street">Street: </label>
+  <input id="street" type="text" required="required" formControlName="street">
+  <br>
+  <label for="zip">Zip Code: </label>
+  <input id="zip" type="text" required="required" (change)="changeFn($event)" formControlName="zip">
+  <br>
+  <label for="city">City: </label>
+  <input id="city" type="text" required="required"  [value]="city1" formControlName="city">
+  <br>
+  <label for="state">State: </label>
+  <input id="state" type="text" required="required" formControlName="state">
+
+  <p>{{ errorMessage }}</p>
+
+</div>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()"></form>
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+
